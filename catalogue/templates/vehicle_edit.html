@@ -1,0 +1,108 @@
+{% extends 'masterSession.html' %}
+{% load static %}
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Luis Bone, Francisco Chango, Andres Atapuma">
+    <meta name="keywords" content="CarConsierge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+    <title>Vehicle Edit</title>
+</head>
+
+<body class="body">
+    <div class="container"> -->
+        {% block container %}
+        <div class='header'>
+            <div class='header-box-left'>
+                <h3>Hello, {{userRecord.first_name}} {{userRecord.last_name}}</h3>
+            </div>
+            <div class='header-box-right'>
+                <a class="btn btn-info" href="/dashboard">Dashboard</a> |
+                <a class="btn btn-danger" href="/close">Log Out</a>
+            </div>
+        </div>
+        <div class="main">
+            <div class="box-registration">
+                <h4>Edit Vehicle</h4>
+                <form novalidate action="/vehicle_update" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="vehicle_id" id="vehicle_id" value="{{ this_vehicle.id }}">
+                    <br>
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <th width=30%></th>
+                                <th width=70%></th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td><label for="name">Plate:</label></td>
+                            <td><input type="text" id="plate" name="plate" value="{{ this_vehicle.plate }}"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="name">Year:</label></td>
+                            <td><input type="text" id="year" name="year" value="{{ this_vehicle.year }}"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="name">Decription:</label></td>
+                            <td><input type="text" id="decription" name="decription" value="{{ this_vehicle.decription }}"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="name">Brand:</label></td>
+                            <td><select name="brand" class="form-select form-select-sm" id="brand">
+                                {% for brand in all_the_brands %}
+                                <option value="{{ brand.id }}">{{ brand.name }} </option>
+                                {% endfor %}
+                                </select>
+                                <script>
+                                    var obj = document.getElementById("brand");
+                                    for (var i = 0; i < obj.length; i++) {
+                                        if (obj.options[i].value === "{{ this_vehicle.brand.id }}")
+                                            obj.selectedIndex = i;
+                                    }
+                                </script>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="name">Model:</label></td>
+                            <td><select name="model" id="model" class="form-select form-select-sm">
+                                {% for model in all_the_models %}
+                                <option value="{{ model.id }}">{{ model.name }} </option>
+                                {% endfor %}
+                                </select>
+                                <script>
+                                    var obj = document.getElementById("model");
+                                    for (var i = 0; i < obj.length; i++) {
+                                        if (obj.options[i].value === "{{ this_vehicle.model.id }}")
+                                            obj.selectedIndex = i;
+                                    }
+                                </script>
+                            </td>
+
+                        </tr>
+                    </table>
+                    <br>
+                    <br>
+                    <button class="btn btn-primary btn-lg btn-block" type='submit' id='btn-register'>Update</button>
+                    <a class="btn btn-sm btn-danger" href="/vehicle_view">Cancel</a>
+                </form>
+                {% if messages %} {% for message in messages %}
+                <ul>
+                    <li class="text-danger">{{message}}</li>
+                </ul>
+                {% endfor %} {% endif %}
+            </div>
+        </div>
+        <div class="foot">
+        </div>
+    {% endblock %}
+    <!-- </div>
+</body>
+
+</html> -->

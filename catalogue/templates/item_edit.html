@@ -1,0 +1,71 @@
+{% extends 'masterSession.html' %}
+{% load static %}
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Luis Bone">
+    <meta name="keywords" content="Time Control">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+    <title>Item Edit</title>
+</head>
+
+<body class="body">
+    <div class="container"> -->
+        {% block container %}
+        <div class='header'>
+            <div class='header-box-left'>
+                <h1>Hello, {{userRecord.first_name}} {{userRecord.last_name}}</h1>
+            </div>
+            <div class='header-box-right'>
+                <a class="btn btn-info" href="/dashboard">Dashboard</a> |
+                <a class="btn btn-danger" href="/close">Log Out</a>
+            </div>
+        </div>
+        <div class="main">
+            <div class="box-registration">
+                <h4>Edit Item</h4>
+                <form novalidate action="/item_update" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="item_id" id="item_id" value="{{ this_item.id }}">
+                    <br>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th width=30%></th>
+                                <th width=70%></th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td><label for="name">Name:</label></td>
+                            <td><input type="text" id="name" name="name" value="{{ this_item.name }}"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="name">Price:</label></td>
+                            <td><input type="text" id="price" name="price" value="{{ this_item.price }}"></td>
+                        </tr>
+                    </table>
+                    <br>
+                    <br>
+                    <button class="btn btn-primary btn-lg btn-block" type='submit' id='btn-register'>Update</button>
+                    <a class="btn btn-sm btn-danger" href="/item_view"><i class="icon-flag icon-2x pull-left"></i>Cancel</a>
+                </form>
+                {% if messages %} {% for message in messages %}
+                <ul>
+                    <li class="text-danger">{{message}}</li>
+                </ul>
+                {% endfor %} {% endif %}
+            </div>
+        </div>
+        <div class="foot">
+        </div>
+    {% endblock %}
+    <!-- </div>
+</body>
+
+</html> -->

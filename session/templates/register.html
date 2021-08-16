@@ -1,0 +1,93 @@
+{% extends 'masterSession.html' %}
+{% load static %}
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Luis Bone, Francisco Chango, Andres Atapuma">
+    <meta name="keywords" content="CarConsierge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+    <title>User</title>
+</head>
+
+<body class="body">
+    <div class="container"> -->
+        {% block container %} 
+        <div class="main">
+            <div class="box-registration">
+                <h4>User</h4>
+                <form novalidate action="/register_record" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="user_email" id="user_email" value=".,,.">
+                    <br>
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <th width=30%></th>
+                                <th width=70%></th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td><label for="name">First Name:</label></td>
+                            <td><input type="text" id="first_name" name="first_name"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="name">Last Name:</label></td>
+                            <td><input type="text" id="last_name" name="last_name"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="name">Email:</label></td>
+                            <td><input type="text" id="email" name="email"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="name">Phone:</label></td>
+                            <td><input type="text" id="phone" name="phone"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="name">Password:</label></td>
+                            <td><input type="password" id="password" name="password"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="name">Confirm:</label></td>
+                            <td><input type="password" id="confirm" name="confirm"></td>
+                        </tr>
+                        {% if userRecord.level == 1 %}
+                        <tr>
+                            <td><label for="level">Level:</label></td>
+                            <td><select name="level" id="level">
+                                <option value="1">Admin</option>
+                                <option value="2">Operator</option>
+                            </select></td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td><label for="level">Level:</label></td>
+                            <td><select name="level" id="level">
+                                <option value="2" selected>Operator</option>
+                            </select></td>
+                        </tr> {% endif %}
+                    </table>
+                    <br>
+                    <br>
+                    <button class="btn btn-primary btn-lg btn-block" type='submit' id='btn-register'>Register</button>
+                    <a class="btn btn-small btn-info" href="/"><i class="icon-flag icon-2x pull-left"></i>Cancel</a>
+                </form>
+                {% if messages %} {% for message in messages %}
+                <ul>
+                    <li class="text-danger">{{message}}</li>
+                </ul>
+                {% endfor %} {% endif %}
+            </div>
+        </div>
+        <div class="foot">
+        </div>
+        {% endblock %}
+    <!-- </div>
+</body>
+
+</html> -->

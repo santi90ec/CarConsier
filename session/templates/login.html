@@ -1,0 +1,61 @@
+{% extends 'masterSession.html' %}
+{% load static %}
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Luis Bone, Francisco Chango, Andres Atapuma">
+    <meta name="keywords" content="CarConsierge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+    <title>Login</title>
+</head>
+
+<body class="body">
+    <div class="container">
+        <div class='header'>
+            <div class='header-box-left'>
+            </div>
+            <div class='header-box-right'>
+            </div>
+        </div>
+        <div class="main"> -->
+
+            {% block container %} 
+            <div class="box-login">
+                <h4>Login</h4>
+                <form action="/login" method="post">
+                    {% csrf_token %}
+                    <br>
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <th width=30%></th>
+                                <th width=70%></th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td><label for="name">Email:</label></td>
+                            <td><input type="text" id="email" name="email"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="name">Password:</label></td>
+                            <td><input type="password" id="password" name="password"></td>
+                        </tr>
+                    </table>
+                    <br>
+                    <br>
+                    <button class="btn btn-primary btn-lg btn-block" type='submit' id='btn-login'>Login</button>
+                    <a class="btn btn-small btn-info" href="/"><i class="icon-flag icon-2x pull-left"></i>Cancel</a>
+                </form>
+            </div>
+            {% endblock %}
+        <!-- </div>
+        <div class="foot">
+        </div>
+    </div>
+</body> -->

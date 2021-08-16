@@ -1,0 +1,72 @@
+{% extends 'masterSession.html' %}
+{% load static %}
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Luis Bone, Francisco Chango, Andres Atapuma">
+    <meta name="keywords" content="CarConsierge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+    <title>User View</title>
+</head>
+
+<body class="body">
+    <div class='container'> -->
+        {% block container %}
+        <div class='header'>
+            <div class='header-box-left'>
+                <h3>Hello, {{userRecord.first_name}} {{userRecord.last_name}}</h3>
+            </div>
+            <div class='header-box-right'>
+                <a class="btn btn-info" href="/dashboard">Dashboard</a> |
+                <a class="btn btn-danger" href="/close">Log Out</a>
+            </div>
+        </div>
+        <div class='main'>
+           <br>
+            <div class='main-header-right'>
+                <a class="btn btn-info" href="/register_form">Add new user</a>
+            </div>
+            <div class='main-center-up'>
+                <h4>Users</h4>
+                <form action="" method="GET">
+                    {% csrf_token %}
+                    <table class="table table-striped">
+                        <thead class="thead-dark">
+                            <tr class="table-primary">
+                                <th width=0%>ID</th>
+                                <th width=0%>First Name</th>
+                                <th width=0%>Last Name</th>
+                                <th width=0%>Email</th>
+                                <th width=0%>Phone</th>
+                                <th width=40%>Action</th>
+                            </tr>
+                        </thead>
+                        {% for user in all_the_users %}
+                        <tr class="table-info">
+                            <td><label for="id">{{ user.id }}</label></td>
+                            <td><label for="first_name">{{ user.first_name }}</label></td>
+                            <td><label for="last_name">{{ user.last_name }}</label></td>
+                            <td><label for="email">{{ user.email }}</label></td>
+                            <td><label for="phone">{{ user.phone }}</label></td>
+                            <td>
+                                {% if userRecord.level == 1 %}
+                                <a class="btn btn-sm btn-info" href="/{{ user.id }}/edit/"><i class="icon-flag icon-2x pull-left"></i>Edit</a> |
+                                <a class="btn btn-sm btn-secondary" href="/{{ user.id }}/delete/"><i class="icon-flag icon-2x pull-left"></i>Delete</a> {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </form>
+            </div>
+        </div>
+    {% endblock %}
+    <!-- </div>
+</body>
+
+</html> -->

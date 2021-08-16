@@ -1,0 +1,137 @@
+.body {
+    background-color: rgb(197, 232, 239);
+}
+
+.container {
+    width: 1000px;
+    height: 600px;
+    display: block;
+}
+
+.header {
+    width: 1000px;
+    height: 100px;
+    display: block;
+}
+
+.header-box-left {
+    width: 450px;
+    height: 50px;
+    padding: 0px;
+    display: inline;
+}
+
+.header-box-left h3 {
+    width: 300px;
+    height: 30px;
+    padding: 0px;
+    font-display: center;
+}
+
+.header-box-right {
+    width: 200px;
+    height: 100px;
+    display: inline-block;
+}
+
+.main {
+    width: 1000px;
+    height: 500px;
+    display: block;
+}
+
+.main h3 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 25px;
+    text-align: center;
+}
+
+.main-center-up {
+    width: 1000px;
+    height: 500px;
+    display: block;
+}
+
+.top {
+    width: 850px;
+    height: 50px;
+    display: block;
+}
+
+.box-registration {
+    width: 450px;
+    height: 500px;
+    display: inline-block;
+    margin-top: 0px;
+    vertical-align: top;
+}
+
+.box-registration-right {
+    width: 400px;
+    height: 500px;
+    display: inline-block;
+    margin-top: 0px;
+    vertical-align: top;
+}
+
+.box-login {
+    width: 400px;
+    height: 400px;
+    display: inline-block;
+    margin-top: 0px;
+    vertical-align: top;
+    padding: 20px;
+}
+
+.foot {
+    width: 850px;
+    height: 50px;
+    display: block;
+}
+
+p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+    text-align: center;
+}
+
+span {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    text-align: center;
+}
+
+.box button {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    text-align: left;
+    padding-left: 50px;
+    margin-left: 200px;
+}
+
+.box input {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    width: 250px;
+}
+
+.box textarea {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    width: 250px;
+    height: 160px;
+}
+
+.box label {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    width: 120px;
+    text-align: right;
+    margin-top: 0px;
+}
+
+form {
+    width: auto;
+    height: auto;
+    padding: 0px;
+}

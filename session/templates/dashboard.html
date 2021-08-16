@@ -1,0 +1,64 @@
+{% extends 'masterSession.html' %}
+{% load static %}
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Luis Bone, Francisco Chango, Andres Atapuma">
+    <meta name="keywords" content="CarConsierge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+    <title>Dashboard</title>
+</head>
+
+<body class="body">
+    <div class="container"> -->
+        {% block container %} 
+        <div class='header'>
+            <div class='header-box-left'>
+                <h3>Hello, {{userRecord.first_name}} {{userRecord.last_name}}</h3>
+            </div>
+        </div>
+        {% if userRecord.level == 1 %}
+        <div class="main"> 
+            
+            <a class="btn btn-info" href="/state_view">State</a>
+            
+            <a class="btn btn-info" href="/model_view">Model</a>
+         
+            <a class="btn btn-info" href="/brand_view">Brand</a>
+            
+            <a class="btn btn-info" href="/item_view">Item</a>
+            
+            <a class="btn btn-info" href="/view">User</a>
+
+            <a class="btn btn-info" href="/employee_view">Employee</a>
+            
+            {% endif %}
+            
+            {% if userRecord.level == 2 %}
+            <a class="btn btn-info" href="/address_view">Address</a>
+            
+            <a class="btn btn-info" href="/vehicle_view">Vehicle</a>
+            
+            {% endif %}
+            <a class="btn btn-info" href="/order_view">Order</a>
+          
+            <div class='header-box-right'>
+                <br>
+                <a class="btn btn-danger" href="/close">Log Out</a>
+            </div>
+
+        </div>
+        <div class="foot">
+        </div>
+        {% endblock %}
+    <!-- </div>
+</body>
+
+</html> -->

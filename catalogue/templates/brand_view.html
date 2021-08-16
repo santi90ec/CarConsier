@@ -1,0 +1,68 @@
+
+{% extends 'masterSession.html' %}
+{% load static %}
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Luis Bone, Francisco Chango, Andres Atapuma">
+    <meta name="keywords" content="CarConcierge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+    <title>Brand View</title>
+</head>
+
+<body class="body">
+    <div class='container'> -->
+        {% block container %}
+        <div class='header'>
+            <div class='header-box-left'>
+                <h3>Hello, {{userRecord.first_name}} {{userRecord.last_name}}</h3>
+            </div>
+            <div class='header-box-right'>
+                <a class="btn btn-info" href="/dashboard">Dashboard</a> |
+                <a class="btn btn-danger" href="/close">Log Out</a>
+            </div>
+        </div>
+        <div class='main'>
+            <br>
+            <div class='main-header-right'>
+                <a class="btn btn-info" href="/brand_form">Add new brand</a>
+            </div>
+            <div class='main-center-up'>
+                <h4>Brands</h4>
+                <form action="" method="GET">
+                    {% csrf_token %}
+                    <table class="table table-striped">
+                        <thead class="thead-dark">
+                            <tr class="table-primary">
+                                <th width=0%>ID</th>
+                                <th width=20%>Name</th>
+                                <th width=80%>Action</th>
+                            </tr>
+                        </thead>
+                        {% for brand in all_the_brands %}
+                        <tr class="table-info">
+                            <td><label for="id">{{ brand.id }}</label></td>
+                            <td><label for="name">{{ brand.name }}</label></td>
+                            <td>
+                                {% if userRecord.level == 1 %}
+                                <a class="btn btn-small btn-info" href="/{{ brand.id }}/brand_edit/"><i class="icon-flag icon-2x pull-left"></i>Edit</a> |
+                                <a class="btn btn-small btn-secondary" href="/{{ brand.id }}/brand_delete/"><i class="icon-flag icon-2x pull-left"></i>Delete</a> {% endif %}
+                            </td>
+
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </form>
+            </div>
+        </div>
+    {% endblock %}
+    <!-- </div>
+</body>
+
+</html> -->

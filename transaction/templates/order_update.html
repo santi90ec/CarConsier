@@ -1,0 +1,210 @@
+{% extends 'masterSession.html' %}
+{% load static %}
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Luis Bone, Francisco Chango, Andres Atapuma">
+    <meta name="keywords" content="CarConsierge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+    <title>Update Order</title>
+</head>
+
+<body class="body">
+    <div class="container"> -->
+        {% block container %}
+        <div class='header'>
+            <div class='header-box-left'>
+                <h3>Hello, {{userRecord.first_name}} {{userRecord.last_name}}</h3>
+            </div>
+            <div class='header-box-right'>
+                <a class="btn btn-info" href="/dashboard">Dashboard</a> |
+                <a class="btn btn-danger" href="/close">Log Out</a>
+            </div>
+        </div>
+        <div class="main">
+            <div class="box-registration">
+                <h4>Update Order</h4>
+                <form novalidate action="/order_update_update" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="order_id" id="order_id" value="{{ this_order.id }}">
+                    <br>
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <th width=30%></th>
+                                <th width=70%></th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td><label for="name">Date Collect:</label></td>
+                            <td><label for="name">{{this_order.date_collect|date:'Y-m-d'}}</label></td>
+                        </tr>
+                        <tr>
+                            <td><label for="name">Time Collect:</label></td>
+                            <td><label for="name">{{this_order.time_collect}}</label></td>
+                        </tr>
+                        <tr>
+                            <td><label for="name">Address Collect:</label></td>
+                            <td><label for="name">{{this_order.address_collect.decription}}</label></td>
+                        </tr>
+
+                        <tr>
+                            <td><label for="name">Date Delivery:</label></td>
+                            <td><label for="name">{{this_order.date_delivery|date:'Y-m-d'}}</label></td>
+                        </tr>
+                        <tr>
+                            <td><label for="name">Time Delivery:</label></td>
+                            <td><label for="name">{{this_order.time_delivery}}</label></td>
+                        </tr>
+                        <tr>
+                            <td><label for="name">Address Delivery:</label></td>
+                            <td><label for="name">{{this_order.address_delivery.decription}}</label></td>
+                        </tr>
+                        <tr>
+                            <td><label for="name">Vehicle:</label></td>
+                            <td><label for="name">{{this_order.vehicle.decription}}</label></td>
+                        </tr>
+                        <tr>
+                            <td><label for="name">Decription:</label></td>
+                            <td><label for="name">{{this_order.decription}}</label></td>
+                        </tr>
+                        <tr>
+                            <td><label for="name">Item Collect:</label></td>
+                            <td><select name="item_collect" id="item_collect">
+                                <option value="" selected="selected">Choose here</option>
+                                {% for item_collect in all_the_item_collects %}
+                                <option value="{{ item_collect.id }}">{{ item_collect.name }} </option>
+                                {% endfor %}
+                                </select>
+                                <script>
+                                    var obj = document.getElementById("item_collect");
+                                    for (var i = 0; i < obj.length; i++) {
+                                        if (obj.options[i].value === "{{ this_order.item_collect.id }}")
+                                            obj.selectedIndex = i;
+                                    }
+                                </script>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="name">Item Delivery:</label></td>
+                            <td><select name="item_delivery" id="item_delivery">
+                                <option value="" selected="selected">Choose here</option>
+                                {% for item_delivery in all_the_item_deliverys %}
+                                <option value="{{ item_delivery.id }}">{{ item_delivery.name }} </option>
+                                {% endfor %}
+                                </select>
+                                <script>
+                                    var obj = document.getElementById("item_delivery");
+                                    for (var i = 0; i < obj.length; i++) {
+                                        if (obj.options[i].value === "{{ this_order.item_delivery.id }}")
+                                            obj.selectedIndex = i;
+                                    }
+                                </script>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="name">Employee:</label></td>
+                            <td><select name="employee" id="employee">
+                                <option value="" selected="selected">Choose here</option>
+                                {% for employee in all_the_employees %}
+                                <option value="{{ employee.id }}">{{ employee.last_name }} {{ employee.first_name }} </option>
+                                {% endfor %}
+                                </select>
+                                <script>
+                                    var obj = document.getElementById("employee");
+                                    for (var i = 0; i < obj.length; i++) {
+                                        if (obj.options[i].value === "{{ this_order.employee.id }}")
+                                            obj.selectedIndex = i;
+                                    }
+                                </script>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="name">State:</label></td>
+                            <td><select name="state" id="state">
+                                <option value="" selected="selected">Choose here</option>
+                                {% for state in all_the_states %}
+                                <option value="{{ state.id }}">{{ state.name }}</option>
+                                {% endfor %}
+                                </select>
+                                <script>
+                                    var obj = document.getElementById("state");
+                                    for (var i = 0; i < obj.length; i++) {
+                                        if (obj.options[i].value === "{{ this_order.state.id }}")
+                                            obj.selectedIndex = i;
+                                    }
+                                </script>
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <br>
+                    <button class="btn btn-primary btn-lg btn-block" type='submit' id='btn-register'>Update</button>
+                    <a class="btn btn-small btn-info" href="/order_view"><i class="icon-flag icon-2x pull-left"></i>Cancel</a>
+                </form>
+                {% if messages %} {% for message in messages %}
+                <ul>
+                    <li class="text-danger">{{message}}</li>
+                </ul>
+                {% endfor %} {% endif %}
+            </div>
+            <div class="box-registration-right">
+                <h4>Tracing Order</h4>
+                <form novalidate action="/order_tracing_record" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="order_id" id="order_id" value="{{ this_order.id }}">
+                    <br>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th width=30%></th>
+                                <th width=70%></th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td><label for="name">Decription:</label></td>
+                            <td><input type="text" id="decription" name="decription"></td>
+                        </tr>
+                    </table>
+                    <br>
+                    <button class="btn btn-primary btn-lg btn-block" type='submit' id='btn-register'>Register</button>
+                    <br>
+                    <h4>Tracing</h4>
+                    <table class="table table-striped">
+                        <thead class="thead-dark">
+                            <tr class="table-primary">
+                                <!-- <th width=0%>ID</th> -->
+                                <th width=25%>Date</th>
+                                <th width=25%>Time</th>
+                                <th width=50%>Description</th>
+                                <!-- <th width=20%>Action</th> -->
+                            </tr>
+                        </thead>
+                        {% for order_tracing in all_the_order_tracings %}
+                        <tr class="table-info">
+                            <!-- <td><label for="id">{{ order_tracing.id }}</label></td> -->
+                            <td><label for="date">{{ order_tracing.updated_at|date:'Y-m-d' }}</label></td>
+                            <td><label for="time">{{ order_tracing.updated_at|date:'h:i:s' }}</label></td>
+                            <td><label for="description">{{ order_tracing.decription }}</label></td>
+                            <!-- <td>
+                                <a class="btn btn-small btn-info" href="/{{ order.id }}/order_delete/"><i class="icon-flag icon-2x pull-left"></i>Del</a>
+                            </td> -->
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </form>
+            </div>
+        </div>
+        <div class="foot">
+        </div>
+    {% endblock %}
+    <!-- </div>
+</body>
+
+</html> -->

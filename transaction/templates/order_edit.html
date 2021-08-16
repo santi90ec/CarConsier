@@ -1,0 +1,194 @@
+{% extends 'masterSession.html' %}
+{% load static %}
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Luis Bone, Francisco Chango, Andres Atapuma">
+    <meta name="keywords" content="CarConsierge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+    <title>Edit Order</title>
+</head>
+
+<body class="body">
+    <div class="container"> -->
+        {% block container %}
+        <div class='header'>
+            <div class='header-box-left'>
+                <h3>Hello, {{userRecord.first_name}} {{userRecord.last_name}}</h3>
+            </div>
+            <div class='header-box-right'>
+                <a class="btn btn-info" href="/dashboard">Dashboard</a> |
+                <a class="btn btn-danger" href="/close">Log Out</a>
+            </div>
+        </div>
+        <div class="main">
+            <div class="box-registration">
+                <h4>Edit Order</h4>
+                <form novalidate action="/order_update" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="order_id" id="order_id" value="{{ this_order.id }}">
+                    <input type="hidden" name="user_id" id="user_id" value="{{ this_order.user.id }}">
+                    <br>
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <th width=30%></th>
+                                <th width=70%></th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td><label for="name">Date Collect:</label></td>
+                            <td><input type="date" id="date_collect" name="date_collect" value="{{this_order.date_collect|date:'Y-m-d'}}"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="name">Time Collect:</label></td>
+                            <td><select class="form-select form-select-sm" name="time_collect" id="time_collect">
+                                <option value="" selected="selected">Choose here</option>
+                                <option value="08:00AM">08:00AM</option>
+                                <option value="09:00AM">09:00AM</option>
+                                <option value="10:00AM">10:00AM</option>
+                                <option value="11:00AM">11:00AM</option>
+                                <option value="12:00PM">12:00PM</option>
+                                <option value="01:00PM">01:00PM</option>
+                                <option value="02:00PM">02:00PM</option>
+                                <option value="03:00PM">03:00PM</option>
+                                <option value="04:00PM">04:00PM</option>
+                                <option value="05:00PM">05:00PM</option>
+                                <option value="06:00PM">06:00PM</option>
+                                </select>
+                                <script>
+                                    var obj = document.getElementById("time_collect");
+                                    for (var i = 0; i < obj.length; i++) {
+                                        if (obj.options[i].value === "{{ this_order.time_collect }}")
+                                            obj.selectedIndex = i;
+                                    }
+                                </script>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="name">Address Collect:</label></td>
+                            <td><select class="form-select form-select-sm" name="address_collect" id="address_collect">
+                                <!-- <option value="" selected="selected">Choose here</option> -->
+                                {% for address_collect in all_the_address_collects %}
+                                <option value="{{ address_collect.id }}">{{ address_collect.decription }} </option>
+                                {% endfor %}
+                                </select>
+                                <script>
+                                    var obj = document.getElementById("address_collect");
+                                    for (var i = 0; i < obj.length; i++) {
+                                        if (obj.options[i].value === "{{ this_order.address_collect.id }}")
+                                            obj.selectedIndex = i;
+                                    }
+                                </script>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="name">Date Delivery:</label></td>
+                            <td><input type="date" id="date_delivery" name="date_delivery" value="{{this_order.date_delivery|date:'Y-m-d'}}"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="name">Time Delivery:</label></td>
+                            <td><select class="form-select form-select-sm" name="time_delivery" id="time_delivery">
+                                <option value="" selected="selected">Choose here</option>
+                                <option value="08:00AM">08:00AM</option>
+                                <option value="09:00AM">09:00AM</option>
+                                <option value="10:00AM">10:00AM</option>
+                                <option value="11:00AM">11:00AM</option>
+                                <option value="12:00PM">12:00PM</option>
+                                <option value="01:00PM">01:00PM</option>
+                                <option value="02:00PM">02:00PM</option>
+                                <option value="03:00PM">03:00PM</option>
+                                <option value="04:00PM">04:00PM</option>
+                                <option value="05:00PM">05:00PM</option>
+                                <option value="06:00PM">06:00PM</option>
+                                </select>
+                                <script>
+                                    var obj = document.getElementById("time_delivery");
+                                    for (var i = 0; i < obj.length; i++) {
+                                        if (obj.options[i].value === "{{ this_order.time_delivery }}")
+                                            obj.selectedIndex = i;
+                                    }
+                                </script>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="name">Address Delivery:</label></td>
+                            <td><select class="form-select form-select-sm" name="address_delivery" id="address_delivery">
+                                <!-- <option value="" selected="selected">Choose here</option> -->
+                                {% for address_delivery in all_the_address_deliverys %}
+                                <option value="{{ address_delivery.id }}">{{ address_delivery.decription }} </option>
+                                {% endfor %}
+                                </select>
+                                <script>
+                                    var obj = document.getElementById("address_delivery");
+                                    for (var i = 0; i < obj.length; i++) {
+                                        if (obj.options[i].value === "{{ this_order.address_delivery.id }}")
+                                            obj.selectedIndex = i;
+                                    }
+                                </script>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="name">Vehicle:</label></td>
+                            <td><select class="form-select form-select-sm" name="vehicle" id="vehicle">
+                                <!-- <option value="" selected="selected">Choose here</option> -->
+                                {% for vehicle in all_the_vehicles %}
+                                <option value="{{ vehicle.id }}">{{ vehicle.decription }} </option>
+                                {% endfor %}
+                                </select>
+                                <script>
+                                    var obj = document.getElementById("vehicle");
+                                    for (var i = 0; i < obj.length; i++) {
+                                        if (obj.options[i].value === "{{ this_order.vehicle.id }}")
+                                            obj.selectedIndex = i;
+                                    }
+                                </script>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="name">Item Delivery:</label></td>
+                            <td><select class="form-select form-select-sm" name="item_delivery" id="item_delivery">
+                                <option value="" selected="selected">Choose here</option>
+                                {% for item_delivery in all_the_item_deliverys %}
+                                <option value="{{ item_delivery.id }}">{{ item_delivery.name }} </option>
+                                {% endfor %}
+                                </select>
+                                <script>
+                                    var obj = document.getElementById("item_delivery");
+                                    for (var i = 0; i < obj.length; i++) {
+                                        if (obj.options[i].value === "{{ this_order.item_delivery.id }}")
+                                            obj.selectedIndex = i;
+                                    }
+                                </script>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="name">Decription:</label></td>
+                            <td><input type="text" id="decription" name="decription" value="{{ this_order.decription }}"></td>
+                        </tr>
+                    </table>
+                    <br>
+                    <br>
+                    <button class="btn btn-primary btn-lg btn-block" type='submit' id='btn-register'>Update</button>
+                    <a class="btn btn-small btn-danger" href="/order_view">Cancel</a>
+                </form>
+                {% if messages %} {% for message in messages %}
+                <ul>
+                    <li class="text-danger">{{message}}</li>
+                </ul>
+                {% endfor %} {% endif %}
+            </div>
+        </div>
+        <div class="foot">
+        </div>
+    {% endblock %}
+    <!-- </div>
+</body>
+
+</html> -->

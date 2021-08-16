@@ -1,0 +1,195 @@
+/* * {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    border: none;
+    outline: 1px solid red;
+} */
+
+.body {
+    background-color: rgb(197, 232, 239);
+}
+
+.container {
+    width: 900px;
+    height: 600px;
+    display: block;
+}
+
+.header {
+    width: 900px;
+    height: 100px;
+    display: block;
+}
+
+.header-box-left {
+    width: 450px;
+    height: 50px;
+    padding: 0px;
+    display: inline;
+}
+
+.header-box-left h3 {
+    width: 300px;
+    height: 30px;
+    padding: 0px;
+    font-display: center;
+}
+
+.header-box-right {
+    width: 200px;
+    height: 100px;
+    display: inline-block;
+}
+
+.main {
+    width: 900px;
+    height: 500px;
+    display: block;
+}
+
+.main h3 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 25px;
+    text-align: center;
+}
+
+.top {
+    width: 850px;
+    height: 50px;
+    display: block;
+}
+
+.box-registration {
+    width: 800px;
+    height: 400px;
+    display: inline-block;
+    margin-top: 0px;
+    vertical-align: top;
+}
+
+.box-login {
+    width: 400px;
+    height: 400px;
+    display: inline-block;
+    margin-top: 0px;
+    vertical-align: top;
+    padding: 20px;
+}
+
+.foot {
+    width: 850px;
+    height: 50px;
+    display: block;
+}
+
+p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+    text-align: center;
+}
+
+span {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    text-align: center;
+}
+
+.box button {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    text-align: left;
+    padding-left: 50px;
+    margin-left: 200px;
+}
+
+.box input {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    width: 250px;
+}
+
+.box textarea {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    width: 250px;
+    height: 160px;
+}
+
+.box label {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    width: 120px;
+    text-align: right;
+    margin-top: 0px;
+}
+
+form {
+    width: auto;
+    height: auto;
+    padding: 0px;
+}
+/* Variable definition */
+$easeInOutQuart: cubic-bezier(0.770, 0.000, 0.175, 1.000);
+
+/* Pen's SCSS */
+body {
+//  font-family: ;
+  background: white url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/86637/sky.jpeg) no-repeat center 0% / cover;
+  transition: background-position .3s ease-in-out;
+  
+  &.fp-viewing-0 {
+    background-position: center 0%;
+  }
+  
+  &.fp-viewing-1 {
+    background-position: center 50%;
+  }
+  
+  &.fp-viewing-2 {
+    background-position: center 100%;
+  }
+}
+
+.one,
+.three {
+  background: linear-gradient(-45deg, transparent 25%, white 25%, white 75%, transparent 75%, transparent 100%);
+}
+
+.two {
+  background: linear-gradient(45deg, transparent 25%, white 25%, white 75%, transparent 75%, transparent 100%);
+  text-align: right;
+}
+
+h1,
+h2 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 58px;
+  max-width: 830px;
+  padding: 0 15px;
+  margin: 0 auto;
+  height: 64px;
+  overflow: hidden;
+  line-height: 3.5;
+  transition: line-height .85s $easeInOutQuart;
+}
+
+h1 {
+  font-weight: 100;
+  transition-delay: .3s;
+}
+
+h2 {
+  margin-top: -6px;
+  font-weight: 300;
+  transition-delay: .8s;
+}
+
+.section.active {
+  h1,
+  h2 {
+    line-height: 1;
+  }
+}
+
